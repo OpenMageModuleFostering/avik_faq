@@ -11,21 +11,26 @@
   <?php echo $this->getPagerHtml(); ?> 
   
   <!-- responsive accordian -->
-  <?php foreach($collection AS $faq): ?>
-  
-  <div id="ID_<?php echo $faq->getData('faq_id');?>" class="expandContent">
-    <h3 class="faq-header">
-	  <div class="plus icon" id="plus"></div>
-      <div class="headerColumn1"><?php echo $this->htmlEscape($faq->getData('faq_title'));?> </div>
-      
-      <div class="expandedContentClearFloat"></div>
-    </h3>
-    <div class="expandedContent">
-	<?php echo $__helper->filter($faq->getData('faq_description')); ?>
-	</div>
-  </div>
-  <div class="clearfloat"></div>
-  <?php endforeach; ?>
+  <?php 
+  if(count($collection)>0){
+	  foreach($collection AS $faq): ?>
+	  
+	  <div id="ID_<?php echo $faq->getData('faq_id');?>" class="expandContent">
+	    <h3 class="faq-header">
+		  <div class="plus icon" id="plus"></div>
+	      <div class="headerColumn1"><?php echo $this->htmlEscape($faq->getData('faq_title'));?> </div>
+	      
+	      <div class="expandedContentClearFloat"></div>
+	    </h3>
+	    <div class="expandedContent">
+		<?php echo $__helper->filter($faq->getData('faq_description')); ?>
+		</div>
+	  </div>
+	  <div class="clearfloat"></div>
+	  <?php endforeach; ?>
+	 <?php } else {?>
+	 	<div><?php echo $this->__('No Record Found.');?></div>
+	 <?php } ?>
  <?php echo $this->getPagerHtml(); ?>  
   
 </div>

@@ -49,16 +49,23 @@ class Avik_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action
             ->_addContent($this->getLayout()->createBlock('avik_faq/adminhtml_faq_edit')->setData('action', $this->getUrl('*/*/save')))
             ->renderLayout();
     }
-     
+    public function getAllStore(){
+		$allStores = Mage::app()->getStores();
+		$storeId=array();
+		foreach ($allStores as $_eachStoreId => $val)
+		{
+			$storeId[] = Mage::app()->getStore($_eachStoreId)->getId();
+		}
+		return implode(',',$storeId);
+	}
     public function saveAction()
     {
         if ($postData = $this->getRequest()->getPost()) {
             $model = Mage::getSingleton('avik_faq/faq');
 			if(isset($postData['stores'])) {
 			    if(in_array('0',$postData['stores'])){
-			        $postData['store_id'] = '0';
-			       	
-			    }
+			        $postData['store_id'] = $this->getAllStore();
+			     }
 			    else{
 			        $postData['store_id'] = implode(",", $postData['stores']);
 			        

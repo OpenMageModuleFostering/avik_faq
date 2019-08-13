@@ -1,56 +1,56 @@
-var $ = jQuery.noConflict();
-$(window).load(function() {
+var jQuery = jQuery.noConflict();
+jQuery(window).load(function() {
 	
-	var divs = $('.expandContent'),
+	var divs = jQuery('.expandContent'),
 	content = divs.children('div');
 	
 	// hide all divs initially
 	content.hide();
 	
 	// drop down menu - on change show the selected div
-	$('#SelectMenu').on('change', function() {
+	jQuery('#SelectMenu').on('change', function() {
 	  content.hide();
 	  showDiv(this.value);
 	});
 
 	// function that shows the selected div
 	function showDiv(divID) {
-		$(".styled option").removeClass("selected");
-		$(".styled option").removeAttr("style");
-		var thisContent = $('#'+divID).find('.expandedContent')
-		if ($(thisContent).is(':visible')) {
+		jQuery(".styled option").removeClass("selected");
+		jQuery(".styled option").removeAttr("style");
+		var thisContent = jQuery('#'+divID).find('.expandedContent')
+		if (jQuery(thisContent).is(':visible')) {
 			thisContent.slideUp("slow");
-			$('#'+divID).find('.header .expand img').attr('src', 'plus.png');
-			$('#'+divID+' .icon').removeClass('minus');
-			$('#'+divID+' .icon').addClass('plus');
+			jQuery('#'+divID).find('.header .expand img').attr('src', 'plus.png');
+			jQuery('#'+divID+' .icon').removeClass('minus');
+			jQuery('#'+divID+' .icon').addClass('plus');
 		}
 		else {
 			content.not(thisContent).slideUp("slow", function() {
-				$('#'+divID).parent().find('.header .expand img').attr('src', 'plus.png');
-				$('.icon').removeClass('minus');
-				$('.icon').addClass('plus');
+				jQuery('#'+divID).parent().find('.header .expand img').attr('src', 'plus.png');
+				jQuery('.icon').removeClass('minus');
+				jQuery('.icon').addClass('plus');
 			});
 			thisContent.slideDown("slow", function() {
 				// scroll to selected div
-				$('html, body').animate({
-					scrollTop: $("#"+divID).offset().top
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#"+divID).offset().top
 				}, 500);
 				
 				// change drop down menu's selected option  
-				$('#SelectMenu').val(divID);
-				$('#SelectMenu option[value="'+divID+'"]').addClass("selected");
+				jQuery('#SelectMenu').val(divID);
+				jQuery('#SelectMenu option[value="'+divID+'"]').addClass("selected");
 				
 				//change + icon to -
-				$('#'+divID).find('.header .expand img').attr('src', 'minus.png');
+				jQuery('#'+divID).find('.header .expand img').attr('src', 'minus.png');
 				
-				$('#'+divID+' .icon').removeClass('plus');
-				$('#'+divID+' .icon').addClass('minus');
+				jQuery('#'+divID+' .icon').removeClass('plus');
+				jQuery('#'+divID+' .icon').addClass('minus');
 			});
 		}
 	}	
 	
 	// on click show the selected div
 	divs.click(function() {
-		showDiv($(this).attr('id'));
+		showDiv(jQuery(this).attr('id'));
 	});	
 });

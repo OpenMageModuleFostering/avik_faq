@@ -3,7 +3,7 @@
 <faq_handle><!-- declare a custom handle so you won't duplicate the code -->
         <reference name="head">
 			
-			<action method="addJs">
+			<action method="addJs" ifconfig="faq_options_new/messages/enabled">
                 <script>faq/jquery.min.js</script>
             </action>
             <action method="addJs">

@@ -45,7 +45,7 @@ class Avik_Faq_Block_Adminhtml_Faq_Edit_Form extends Mage_Adminhtml_Block_Widget
             'required'  => true,
         )); 
 		
-		if (!Mage::app()->isSingleStoreMode()) {
+		//if (!Mage::app()->isSingleStoreMode()) {
 			    $fieldset->addField('store_id', 'multiselect', array(
 			        'name' => 'stores[]',
 			        'label' => Mage::helper('checkout')->__('Store View'),
@@ -54,13 +54,13 @@ class Avik_Faq_Block_Adminhtml_Faq_Edit_Form extends Mage_Adminhtml_Block_Widget
 			        'values' => Mage::getSingleton('adminhtml/system_store')
 			                     ->getStoreValuesForForm(false, true),
 			    ));
-		}
-		else {
-    			$fieldset->addField('store_id', 'hidden', array(
-			        'name' => 'stores[]',
-			        'value' => Mage::app()->getStore(true)->getId()
-    			));
-			}
+		//}
+		//else {
+    			//$fieldset->addField('store_id', 'hidden', array(
+			        //'name' => 'stores[]',
+			        //'value' => Mage::app()->getStore(true)->getId()
+    			//));
+			//}
 		 $fieldset->addField('faq_description', 'editor', 
                 array (
                         'name' => 'faq_description', 

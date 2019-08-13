@@ -37,8 +37,9 @@ class Avik_Faq_Block_List extends Mage_Core_Block_Template {
 		$offset = ($curr_page - 1) * $limit;
 		$collection = Mage::getModel('avik_faq/faq')->getCollection();
 		$store_id=Mage::app()->getStore()->getStoreId();
-		$collection->addFieldToFilter('is_active', array('eq' =>1))->addStoreFilter($store_id);
+		$collection->addFieldToFilter('is_active', array('eq' =>1))->addFieldToFilter('store_id', array('like' =>'%'.$store_id.'%'));
 		$collection->getSelect()->limit($limit,$offset);
+		
 		return $collection;
 	}
 
