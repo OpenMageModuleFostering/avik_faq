@@ -1,0 +1,47 @@
+<config>
+    <tabs>
+        <faqconfig translate="label" module="avik_faq">
+            <label>Faq Config</label>
+            <sort_order>99999</sort_order>
+        </faqconfig>
+    </tabs>
+	<sections>
+        <faq_options_new translate="label" module="avik_faq">
+            <label>Faq Config Options</label>
+            <tab>faqconfig</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <messages translate="label">
+                    <label>Required Configurations for Faq</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>  
+					<fields>
+				        <faq_title>
+				            <label>Faq Title</label>
+				            <frontend_type>text</frontend_type>
+				            <sort_order>1</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>                    
+				        </faq_title>
+						<pagination_limit>
+				            <label>Pagination Limit</label>
+				            <frontend_type>text</frontend_type>
+				            <sort_order>1</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>                    
+				        </pagination_limit>
+   					 </fields>               
+                </messages>
+            </groups>
+        </faq_options_new>
+    </sections>     
+</config>

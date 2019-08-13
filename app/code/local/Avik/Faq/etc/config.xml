@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Avik_Faq>
+            <version>1.6.0.0</version>
+        </Avik_Faq>
+    </modules>
+     
+    <global>
+        <helpers>
+            <avik_faq>
+                <!-- This is where we define our helper directory -->
+                <class>Avik_Faq_Helper</class>
+            </avik_faq>
+        </helpers>
+                    
+        <blocks>
+            <avik_faq>
+                <!-- Set a block definition and lookup directory -->
+                <class>Avik_Faq_Block</class>
+            </avik_faq>
+        </blocks>
+         
+        <models>
+            <avik_faq>
+                <!-- This is where we define our model directory -->
+                <class>Avik_Faq_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>avik_faq_mysql4</resourceModel>
+            </avik_faq>
+             
+            <!-- Here's our resource model we'll use to create a database table -->
+            <avik_faq_mysql4>
+                <class>Avik_Faq_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the baz name, but the real table is foo_bar_baz -->
+                    <!-- After we define our entity, we can call it with our model by calling foo_bar/baz -->
+                    <faq>
+                        <table>avik_faq_list</table>
+                    </faq>
+                </entities>
+            </avik_faq_mysql4>
+        </models>
+         
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <avik_faq_setup>
+                <setup>
+                    <module>Avik_Faq</module>
+                </setup>
+            </avik_faq_setup>
+        </resources>
+    </global>
+     <frontend>
+      <routers>
+         <faqnew>
+            <use>standard</use>
+            <args>
+               <module>Avik_Faq</module>
+               <frontName>allfaq</frontName>
+            </args>
+         </faqnew>
+      </routers>
+	   <layout>
+            <updates>
+                <allfaq>
+                    <file>avik_faq.xml</file>
+                </allfaq>
+            </updates>
+   </layout>
+   </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Avik_Faq before="Mage_Adminhtml">Avik_Faq_Adminhtml</Avik_Faq>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+     
+    <adminhtml>
+		
+        <layout>
+            <updates>
+                <avik_faq>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>avik/faq.xml</file>
+                </avik_faq>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

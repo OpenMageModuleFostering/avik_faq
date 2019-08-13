@@ -1,0 +1,30 @@
+<?xml version="1.0"?> 
+<layout>
+<faq_handle><!-- declare a custom handle so you won't duplicate the code -->
+        <reference name="head">
+			
+			<action method="addJs">
+                <script>faq/jquery.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>faq/ResponsiveAccordianMenu.js</script>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/faq/faq.css</stylesheet>
+            </action>
+			<action method="addCss">
+                <stylesheet>css/faq/ResponsiveAccordianMenu.css</stylesheet>
+            </action>
+        </reference>
+    </faq_handle>
+<faqnew_index_index>
+<update handle="faq_handle" />
+		<reference name="root">
+        	<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+    	</reference>
+        <reference name="content">
+            <block type='avik_faq/List' name='faq' 
+                   template='avik/faq/list.phtml' />
+        </reference>
+</faqnew_index_index>
+</layout>
